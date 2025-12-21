@@ -1,2 +1,4 @@
-from rootedGraph import RootedGraph
-from dictionaryGraph import DictionaryGraph
+"""
+This module implements all graph objects from the project
+"""
+from .dictionaryGraph import DictionaryGraph

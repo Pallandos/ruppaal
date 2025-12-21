@@ -1,4 +1,4 @@
-from rootedGraph import RootedGraph
+from .rootedGraph import RootedGraph
 
 class DictionaryGraph(RootedGraph):
     """Implementation of a Rooted Graph using a dictionary
