@@ -7,3 +7,11 @@
 # ruppaal
 
 Remake of UPPAAL in Python 
+
+# Tests
+
+
+
+## Sources
+
+https://teodorov.github.io/z2mc/book/01_traversals.html
