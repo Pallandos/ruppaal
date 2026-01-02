@@ -1,9 +1,10 @@
-def bfs(graph, on_entry = None, opaque = None) -> tuple:
+from struct.graph import RootedGraph
+
+def bfs(graph: RootedGraph, on_entry = None, opaque = None) -> tuple:
     """Parcours en profondeur 
 
     Args:
-        graph (dict): entry graph
-        initial (str): starting node
+        graph (RootedGraph): entry graph (is a RootedGraph, so the starting nodes are known)
         on_entry (lambda func): lambda function applied to each node (must return tuple bool,opaque)
     """
     marked = []
