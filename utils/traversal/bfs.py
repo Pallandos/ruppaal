@@ -1,4 +1,4 @@
-def bfs(graph, on_entry = None, opaque = None):
+def bfs(graph, on_entry = None, opaque = None) -> tuple:
     """Parcours en profondeur 
 
     Args:
