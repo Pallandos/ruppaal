@@ -9,7 +9,8 @@ class TestBFS(unittest.TestCase):
         """
         graph = DictionaryGraph()
         try:
-            bfs(graph)
+            out = bfs(graph)
+            self.assertEqual(out, [])
         except Exception as e:
             self.fail(f"bfs raised an exception on edge case: {e}")
     
@@ -18,7 +19,8 @@ class TestBFS(unittest.TestCase):
         """
         graph = DictionaryGraph({}, None)
         try:
-            bfs(graph)
+            out = bfs(graph)
+            self.assertEqual(out, [])
         except Exception as e:
             self.fail(f"bfs raised an exception on edge case with null: {e}")
 
@@ -27,7 +29,8 @@ class TestBFS(unittest.TestCase):
         """
         graph = DictionaryGraph(None, [])
         try:
-            bfs(graph)
+            out = bfs(graph)
+            self.assertEqual(out, [])
         except Exception as e:
             self.fail(f"bfs raised an exception on edge case with null graph: {e}")
     
@@ -36,7 +39,8 @@ class TestBFS(unittest.TestCase):
         """
         graph = DictionaryGraph({1: None}, [])
         try:
-            bfs(graph)
+            out = bfs(graph)
+            self.assertEqual(out, [1])
         except Exception as e:
             self.fail(f"bfs raised an exception on edge case with null dict: {e}")
             
