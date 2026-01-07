@@ -10,6 +10,9 @@ Remake of UPPAAL in Python
 
 # Tests
 
+Run test with the following command :
+
+    make test
 
 
 ## Sources
