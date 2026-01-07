@@ -1,7 +1,7 @@
 from __future__ import annotations
-from rootedGraph import RootedGraph
+from struct.graph import RootedGraph
 from copy import deepcopy
-from bfs import bfs
+from utils.traversal import bfs
 
 class HanoiTower():
     
