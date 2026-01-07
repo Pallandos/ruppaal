@@ -5,8 +5,7 @@ class Ab2(RootedGraph):
     """
     
     def __init__(self):
-        print("AB2 model initialized") 
-        print("States are represented as (Alice_state, Bob_state, Alice_flag, Bob_flag)")
+        pass
     
     def roots(self) -> list:
         return [("I", "I", "down", "down")]
@@ -16,10 +15,10 @@ class Ab2(RootedGraph):
         neighbors = []
         
         if alice_state == "I":
-            neighbors.append(("CS", bob_state, "up", bob_flag))
+            neighbors.append(("W", bob_state, "up", bob_flag))
         
         if bob_state == "I":
-            neighbors.append((alice_state, "CS", alice_flag, "up"))
+            neighbors.append((alice_state, "W", alice_flag, "up"))
         
         if alice_state == "W" and bob_flag == "down":
             neighbors.append(("CS", bob_state, "up", "down"))

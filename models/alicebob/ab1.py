@@ -5,7 +5,7 @@ class Ab1(RootedGraph):
     """
     
     def __init__(self):
-        print("AB1 model initialized")
+        pass
     
     def roots(self) -> list:
         return [("I", "I")]
