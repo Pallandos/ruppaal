@@ -22,17 +22,24 @@ class HanoiState:
         return f"HanoiState({self.pegs})"
 
 
-# Implémentation de la sémantique du langage pour les tours de Hanoi
-# Un état est un HanoiState avec 3 listes (une pour chaque tige)
-# Une action est un tuple (tige_source, tige_destination)
 class HanoiLanguageSemantics(LanguageSemantics):
+    """
+    Implémentation de la sémantique du langage pour les tours de Hanoi
+    
+    Un état est un HanoiState avec 3 listes (une pour chaque tige)
+    
+    Une action est un tuple (tige_source, tige_destination)
+    """
 
     # Constructeur : initialise le problème avec n disques
     def __init__(self, n_disks):
         self.n = n_disks
 
-    # Retourne les états initiaux : tous les disques sur la première tige
     def initials(self):
+        """
+        Retourne les états initiaux (tous les disques sur la première tige)
+        """
+        
         initial_state = HanoiState([
             list(range(self.n, 0, -1)),  # tous les disques sur la tige 0
             [],  # tige 1 vide
@@ -40,9 +47,13 @@ class HanoiLanguageSemantics(LanguageSemantics):
         ])
         return [initial_state]
 
-    # Retourne toutes les actions possibles depuis un état donné
-    # Une action est un tuple (tige_source, tige_destination)
     def actions(self, state):
+        """
+        Retourne toutes les actions possibles depuis un état donné
+
+        Une action est un tuple (tige_source, tige_destination)
+        """
+
         possible_actions = []
         pegs = state.pegs
 
@@ -68,8 +79,11 @@ class HanoiLanguageSemantics(LanguageSemantics):
 
         return possible_actions
 
-    # Exécute une action sur un état et retourne l'ensemble des états résultants
     def execute(self, state, action):
+        """
+        Exécute une action sur un état et retourne l'ensemble des états résultants
+        """
+        
         source, dest = action
         
         # Deepcopy de l'état complet en une seule opération
@@ -83,7 +97,11 @@ class HanoiLanguageSemantics(LanguageSemantics):
         new_state = HanoiState(new_pegs)
         return [new_state]
     
-    # Méthode utilitaire pour vérifier si un état est une solution
+    # Méthode utilitaire
     def is_solution(self, state):
+        """
+        Vérifie si l'état est une solution (tous les disques sur la tige 2 ou tige 1)
+        """
+        
         return (state.pegs == [[], [], list(range(self.n, 0, -1))] or
                 state.pegs == [[], list(range(self.n, 0, -1)), []])
