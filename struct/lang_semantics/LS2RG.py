@@ -1,4 +1,4 @@
-from ...hanoi.rootedGraph import RootedGraph
+from struct.graph import RootedGraph
 
 class LS2RG(RootedGraph):
     """
@@ -12,11 +12,11 @@ class LS2RG(RootedGraph):
     def roots(self):
         return self._ls.initials()
 
-    def neighbors(self, state):
+    def neighbors(self, vertex):
         successors = []
 
-        for action in self._ls.actions(state):
-            next_states = self._ls.execute(state, action)
-            successors.extend(next_states)
+        for action in self._ls.actions(vertex):
+            next_vertexs = self._ls.execute(vertex, action)
+            successors.extend(next_vertexs)
 
         return successors

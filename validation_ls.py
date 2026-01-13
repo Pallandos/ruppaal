@@ -1,6 +1,6 @@
-from hanoilanguagesemantics import HanoiLanguageSemantics
-from .LS2RG import LS2RG
-from hanoi.bfs import bfs
+from models.LS2RG import HanoiLanguageSemantics
+from struct.lang_semantics import LS2RG
+from utils.traversal import bfs
 
 
 def hanoi_solver_ls(n):

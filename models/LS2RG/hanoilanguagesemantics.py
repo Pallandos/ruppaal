@@ -1,4 +1,4 @@
-from languagesemantics import LanguageSemantics
+from struct.lang_semantics.languagesemantics import LanguageSemantics
 from copy import deepcopy
 
 class HanoiState:
