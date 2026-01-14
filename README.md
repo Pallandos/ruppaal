@@ -8,6 +8,15 @@
 
 Remake of UPPAAL in Python 
 
+# Set up
+
+You can install and create the venv just by running 
+
+    make install
+
+> [!WARNING]
+> You need `python3` in your path to do so
+
 # Tests
 
 Run test with the following command :
