@@ -2,7 +2,7 @@
 
 test:
 	@echo "[INFO] Running tests with unittest"
-	.venv/bin/python -m unittest discover -s tests
+	python -m unittest discover -s tests
 	@echo "[INFO] All tests finished!"
 
 install:
