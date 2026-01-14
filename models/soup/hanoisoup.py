@@ -10,15 +10,14 @@ def is_transfert_valid_12(state) :
 
 
 def transfert(todo : str):
-    source = todo[1]
-    dest = todo[2]
+    source = int(todo[1])
+    dest = int(todo[2])
 
-    if source not in ["1","2","3"] or dest not in ["1","2","3"]:
+    if source not in [1,2,3] or dest not in [1,2,3]:
         raise TypeError
     
     
-
-
+    
 T11 = Piece(transfert, is_transfert_valid,"T11")
 T12 = Piece(transfert, is_transfert_valid,"T12")
 T13 = Piece(transfert, is_transfert_valid,"T13")
@@ -35,5 +34,3 @@ class HanoiSoup(Soup):
     def __init__(self, pieces, init_value):
         self.pieces = pieces
         self.init_value = init_value
-
-

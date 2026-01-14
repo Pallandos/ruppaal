@@ -20,13 +20,13 @@ class Piece:
         self.nom = nom
 
 class Soupsemantics(LanguageSemantics) :
-    def __init__(self, soup):
+    def __init__(self, soup: Soup):
         self.soup = soup
 
     def initials(self) :
         return(self.soup.init_value)
 
-#une piece pour un mouvemetn 
+    #une piece pour un mouvement
     def actions(self, state):
         set_of_actions = []
         for piece in self.soup.pieces :
@@ -36,9 +36,9 @@ class Soupsemantics(LanguageSemantics) :
         # Faut trouver toutes les branches(=pièces) qui sont exécutables pour un état donné.
         
 
-    def execute(self, state, piece):
+    def execute(self, state, action : Piece) -> list :
         # ici le action c'est une branche et le state c'est le x
-        piece.effet(state)
-        pass
+        out = action.effet(state)
+        return [out]
 
 
