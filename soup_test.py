@@ -1,4 +1,4 @@
-from models.soup import Piece, Soup, Soupsemantics
+from struct.soup import Piece, Soup, Soupsemantics
 
 To1 = Piece(lambda c:1, lambda c:c==0,"To1")
 To2 = Piece(lambda c:0, lambda c:c==1,"To2")
