@@ -1,4 +1,4 @@
-from models.soup.soup_langage import Soup, Piece, Soupsemantics
+from struct.soup import Soup, Piece, Soupsemantics
 
 def is_transfert_valid(origin, dest) :
     #[topA, topB, topC]

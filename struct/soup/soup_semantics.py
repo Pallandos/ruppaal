@@ -1,23 +1,5 @@
-from struct.lang_semantics.languagesemantics import LanguageSemantics
-
-class Soup :
-    """
-    Soup is a group of Pieces objects
-    """
-    def __init__(self, pieces, init_value):
-        self.pieces = pieces
-        self.init_value = init_value
-
-class Piece:
-    """
-    Piece is a part of a Soup. 
-
-    self.garde and self.garde are lambda functions
-    """
-    def __init__(self,effet,garde,nom):
-        self.effet = effet
-        self.garde = garde
-        self.nom = nom
+from struct.lang_semantics import LanguageSemantics
+from .soup import Soup, Piece
 
 class Soupsemantics(LanguageSemantics) :
     def __init__(self, soup: Soup):
@@ -40,5 +22,3 @@ class Soupsemantics(LanguageSemantics) :
         # ici le action c'est une branche et le state c'est le x
         out = action.effet(state)
         return [out]
-
-
