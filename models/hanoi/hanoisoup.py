@@ -1,36 +1,44 @@
-from struct.soup import Soup, Piece, Soupsemantics
-
-def is_transfert_valid(origin, dest) :
-    #[topA, topB, topC]
-    return (origin<dest)
-
-def is_transfert_valid_12(state) :
-    #[topA, topB, topC]
-    return (state[1]>state[0])
-
-
-def transfert(todo : str):
-    source = int(todo[1])
-    dest = int(todo[2])
-
-    if source not in [1,2,3] or dest not in [1,2,3]:
-        raise TypeError
-    
-    
-    
-T11 = Piece(transfert, is_transfert_valid,"T11")
-T12 = Piece(transfert, is_transfert_valid,"T12")
-T13 = Piece(transfert, is_transfert_valid,"T13")
-T21 = Piece(transfert, is_transfert_valid,"T21")
-T22 = Piece(transfert, is_transfert_valid,"T22")
-T23 = Piece(transfert, is_transfert_valid,"T23")
-T31 = Piece(transfert, is_transfert_valid,"T31")
-T32 = Piece(transfert, is_transfert_valid,"T32")
-T33 = Piece(transfert, is_transfert_valid,"T33")
-
-
+from struct.soup import Soup, Piece
+from copy import deepcopy
 
 class HanoiSoup(Soup):
-    def __init__(self, pieces, init_value):
-        self.pieces = pieces
-        self.init_value = init_value
+    def __init__(self, n_disks):
+        # État initial : [[n, ..., 1], [], []]
+        # Attention : on utilise des listes (mutables), donc deepcopy sera vital
+        init_state = [list(range(n_disks, 0, -1)), [], []]
+        
+        # On génère les 6 mouvements possibles (source -> destination)
+        pieces = []
+        for src in range(3):
+            for dst in range(3):
+                if src != dst:
+                    pieces.append(self.create_move_piece(src, dst))
+        
+        # On initialise la classe parente
+        super().__init__(pieces, init_state)
+
+    def create_move_piece(self, source, dest):
+        """Crée une pièce pour déplacer un disque de source vers dest"""
+        
+        # 1. La Garde : Peut-on déplacer de source vers dest ?
+        def guard(state):
+            # Il faut un disque à prendre
+            if not state[source]:
+                return False
+            # La destination doit être vide OU avoir un disque plus grand
+            if state[dest] and state[dest][-1] < state[source][-1]:
+                return False
+            return True
+
+        # 2. L'Effet : Appliquer le mouvement
+        def effect(state):
+            # On copie l'état pour ne pas modifier l'ancien (programmation fonctionnelle pour le BFS)
+            new_state = deepcopy(state)
+            disk = new_state[source].pop()
+            new_state[dest].append(disk)
+            return new_state
+
+        # Nom de la pièce (ex: "Move 0->1")
+        name = f"Move {source}->{dest}"
+        
+        return Piece(effect, guard, name)

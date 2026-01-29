@@ -4,13 +4,6 @@
 
 </div>
 
-# étapes
-
-- [x] Alice and Bob
-- [x] LS2RG
-- [ ] soup
-- [ ] Synchronous composition (chap 5)
-
 # ruppaal
 
 Remake of UPPAAL in Python 
