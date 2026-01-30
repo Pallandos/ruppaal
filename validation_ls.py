@@ -1,6 +1,6 @@
 from models.LS2RG import HanoiLanguageSemantics
 from struct.lang_semantics import LS2RG
-from utils.traversal import bfs
+from utils.traversal import bfs, get_trace
 from struct.soup.soup_semantics import Soupsemantics
 from models.hanoi.hanoisoup import HanoiSoup
 
@@ -46,21 +46,28 @@ def hanoi_solver_soup(n):
 # TEST du Hanoi avec Language Semantics
 # ======================================
 print("=== Résolution de Hanoi avec Language Semantics ===")
-opaque, visited = hanoi_solver_ls(3)
+marked, solution = hanoi_solver_ls(3)
 
-print(f"Nombre d'états explorés : {len(visited)}")
-print(f"Solution trouvée : {opaque}")
+print(f"Nombre d'états explorés (LS) : {len(marked)}")
+if solution:
+    print("Solution trouvée (État final) :", solution[0])
+    trace = get_trace(marked, solution[0])
+    print(f"Trace (longueur {len(trace)}):")
+    for s in trace:
+        print(s)
 
 # ======================================
 # TEST du Hanoi avec Soup Semantics 
 # ======================================
-print("=== Résolution de Hanoi avec Soup Semantics ===")
-solution_soup, visited_soup = hanoi_solver_soup(3)
-print(f"Nombre d'états explorés : {len(visited_soup[0])}")
+print("\n=== Résolution de Hanoi avec Soup Semantics ===")
+marked_soup, solution_soup = hanoi_solver_soup(3)
+print(f"Nombre d'états explorés (Soup) : {len(marked_soup)}")
 
 if solution_soup:
-    print("Solution trouvée : ")
-    for state in solution_soup:
-        print(state)
+    print("Solution trouvée (Soup) :", solution_soup[0])
+    trace = get_trace(marked_soup, solution_soup[0])
+    print(f"Trace (longueur {len(trace)}):")
+    for s in trace:
+        print(s)
 else:
     print("Aucune solution trouvée.")
