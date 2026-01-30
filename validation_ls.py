@@ -19,7 +19,6 @@ def hanoi_solver_ls(n):
 
 def hanoi_solver_soup(n):
     # 1. Instancier la Soupe (Données + Règles locales)
-    # Cela suppose que tu as modifié __init__ pour prendre 'n' comme suggéré
     soup = HanoiSoup(n)
     
     # 2. Instancier la Sémantique (Moteur d'exécution)
@@ -29,7 +28,6 @@ def hanoi_solver_soup(n):
     rg = LS2RG(soup_sem)
 
     # Définition de l'état cible : [n, n-1, ..., 1]
-    # Note: On suppose que les disques vont sur la tige 2 (index 2) ou 1 (index 1)
     target_peg = list(range(n, 0, -1))
 
     def on_entry(state, opaque):
