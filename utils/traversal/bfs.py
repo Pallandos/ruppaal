@@ -34,7 +34,6 @@ def bfs(graph: RootedGraph, on_entry = None, opaque = None) -> tuple:
             if v in marked:
                 is_marked = True
         else:
-            # Linear search for unhashable states
             # marked is a list here
             for state, _ in marked:
                 if state == v:
@@ -72,6 +71,7 @@ def get_trace(marked, target):
                 curr = marked[curr]
             else:
                 break
+            
     elif isinstance(marked, list):
         # Handle list of (state, parent) tuples
         while curr is not None:
