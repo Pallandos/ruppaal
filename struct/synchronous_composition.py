@@ -45,8 +45,6 @@ class SynchronousComposition(LanguageSemantics):
             compound_actions.append((l_map[name], r_map[name]))
             
         # 2. Actions de gauche indépendantes (seulement si non présentes à droite)
-        # Note : Dans une synchro stricte (type Arnold-Nivat), si le nom est dans l'alphabet de droite 
-        # mais pas actif, l'action serait bloquée. Ici, on simplifie en regardant les actions *actives*.
         for name in l_names - r_names:
             compound_actions.append((l_map[name], None))
             
