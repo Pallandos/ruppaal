@@ -19,7 +19,7 @@ class Piece:
     """
     Piece is a part of a Soup. 
 
-    self.garde and self.garde are lambda functions
+    self.garde and self.effet are lambda functions
     """
     def __init__(self,effet,garde,nom):
         self.effet = effet

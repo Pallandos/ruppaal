@@ -1,5 +1,5 @@
 from struct.lang_semantics import LanguageSemantics
-from .isoup import Isoup, Piece
+from .isoup import Isoup, Ipiece
 
 class Isoupsemantics(LanguageSemantics) :
     def __init__(self, isoup: Isoup):
@@ -9,14 +9,14 @@ class Isoupsemantics(LanguageSemantics) :
         # Le BFS attend une liste d'états, on enveloppe donc la valeur initiale
         return [self.isoup.init_value]
     
-    def actions(self, state):
+    def actions(self, input):       #  l'input contient un pas d'exécution de Soup avec : état courant, état futut et transition vers cet état
         set_of_actions = []
-        for piece in self.isoup.pieces:
+        for ipiece in self.isoup.ipieces:
             # On vérifie si l'action est légale
-            if piece.garde(state) :
-                 set_of_actions.append(piece)
+            if ipiece.garde(input) :
+                 set_of_actions.append(ipiece)
         return set_of_actions
     
-    def execute(self, state, action: Piece) ->list:
-        out = action.effet(state)
+    def execute(self, input, action: Ipiece) ->list:
+        out = action.effet(input)
         return [out]
